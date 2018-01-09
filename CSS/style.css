@@ -1,0 +1,28 @@
+.inputText{
+	border:0px;
+	margin:1px;
+}
+
+.loginBtn{
+	float: right;
+    border: 0px;
+    margin: 2px;
+    padding: 2px;
+    width: 60px;
+    cursor:pointer;	
+}
+
+.loginBtn :hover{
+	border:1px;
+}
+
+.Btn{
+	float:left;
+    border: 0px;
+    margin: 2px;
+    padding: 2px;
+    width: 80px;
+    cursor:pointer;	
+} 
+
+#breadcrumb {padding: 20px 0 30px;}
