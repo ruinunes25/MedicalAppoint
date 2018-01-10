@@ -24,9 +24,9 @@
 						and status=1";
 	}
 	function getDoctorsQuerys(){
-		return "SELECT id, nome,status, case when status=1 then 'Activo' 
+		return "SELECT id, nome,status,nif, (case when status=1 then 'Activo' 
 									  when status=2 then 'Inactivo' 
-									  else 'N.A' end as estado FROM `medicos`";
+									  else 'N.A' end) as estado FROM `medicos`";
 	}
 	
 	function addEspecialidadeSQL($name){

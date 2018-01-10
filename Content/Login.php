@@ -21,8 +21,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>Login</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="../css/Style.css" rel="stylesheet" type="text/css" media="all">
+<link href="../CSS/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../CSS/Style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -62,7 +62,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <!-- ################################################################################################ -->
       <table style="width:50%;" align="center">
       	<tr style="display:<?php echo $display; ?>">
-      		<td>Username ou password inválidas.</td>
+      		<td>Username ou password invï¿½lidas.</td>
       	</tr>
       	
       	<tr> 
@@ -92,8 +92,8 @@ Licence URI: http://www.os-templates.com/template-terms
  
  
 <!-- JAVASCRIPTS -->
-<script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/jquery.backtotop.js"></script>
-<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+<script src="../JavaScript/jquery.min.js"></script>
+<script src="../JavaScript/jquery.backtotop.js"></script>
+<script src="../JavaScript/jquery.mobilemenu.js"></script>
 </body>
 </html>

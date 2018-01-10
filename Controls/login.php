@@ -1,6 +1,6 @@
 <?php
 	
-	include("Database.php");
+	include("DataBase.php");
 	include("querys.php");
 	session_start();
 	$conn=openConn();

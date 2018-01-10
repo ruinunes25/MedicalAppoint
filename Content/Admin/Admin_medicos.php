@@ -1,19 +1,24 @@
 <?php
 
-include("../../controls/DB_Auxiliar.php");
+include("../../Controls/DB_Auxiliar.php");
 session_start();
 
 
 
 $data=getDoctors();
 $json = json_decode($data);
+ 
 $Especialidades=json_decode(getActiveSpeci());
 
 $dropoptions="";
 foreach($Especialidades as $spec){
 	$dropoptions.="<option value='".$spec->id."'>".$spec->nome."</option>";
 }
-
+$Clinicas=json_decode(getActiveClinics());
+$clinicdropoptions="";
+foreach($Clinicas as $spec){
+    $clinicdropoptions.="<option value='".$spec->id."'>".$spec->nome."</option>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,20 +32,20 @@ Licence URI: http://www.os-templates.com/template-terms
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>Medical Appoint| AdministraÁ„o | MÈdicos</title>
-<meta charset="utf-8">
+<title>Medical Appoint| Administra√ß√£o | M√©dicos</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../javascript/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../JavaScript/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
 
 
-<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../CSS/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../CSS/style.css" rel="stylesheet" type="text/css" media="all">
 
 <!-- JAVASCRIPTS -->
-<script src="../../javascript/jquery.min.js"></script>
-<script src="../../javascript/jquery.backtotop.js"></script>
-<script src="../../javascript/jquery.mobilemenu.js"></script>
-<script src="../../javascript/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../JavaScript/jquery.min.js"></script>
+<script src="../../JavaScript/jquery.backtotop.js"></script>
+<script src="../../JavaScript/jquery.mobilemenu.js"></script>
+<script src="../../JavaScript/jquery-ui/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css"/> 
 <script type="text/javascript" src="../../DataTables/datatables.min.js"></script>
 </head>
@@ -76,7 +81,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <ul>
       <li><a href="../home.php">Home</a></li>
-      <li><a href="#"><?php echo utf8_encode("MÈdicos");?></a></li>
+      <li><a href="#"> M√©dicos </a></li>
       <!--<li><a href="#">Ipsum</a></li>
       <li><a href="#">Dolor</a></li>-->
     </ul>
@@ -95,7 +100,7 @@ Licence URI: http://www.os-templates.com/template-terms
    <div class="sidebar one_quarter first"> 
       <!-- ################################################################################################ -->
       <h6>Menu</h6>
-      <?php include("../../controls/Menus.php")?>
+      <?php include("../../Controls/Menus.php")?>
      
       <!-- ################################################################################################ -->
     </div>
@@ -112,9 +117,9 @@ Licence URI: http://www.os-templates.com/template-terms
         <table id="Doctors"  class="display" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th><?php echo utf8_encode("CÛdigo");?></th>
-              <th><?php echo utf8_encode("Nome");?></th>
-              <th><?php echo utf8_encode("Estado");?></th> 
+              <th>C√≥digo</th>
+              <th>Nome</th>
+              <th>Estado</th> 
               <th class="hidden"></th>
             </tr>
           </thead>
@@ -142,49 +147,58 @@ Licence URI: http://www.os-templates.com/template-terms
   </main>
 </div>
 
-<div id="create-Medico" title="Novo <?php echo utf8_encode("mÈdico");?>">
+<div id="create-Medico" title="Novo M√©dico"">
   
-  <form action="Admin_form_submit.php" method="post">
+  <form action="Admin_form_submit.php" method="post" accept-charset="UTF-8">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <fieldset>
       <label for="name">Name</label>
       <input type="text" name="name" id="name" value="" style="width:100%" class="text ui-widget-content ui-corner-all">
-      <label for="Nif">Name</label>
+      <label for="Nif">NIF</label>
       <input type="text" name="NIF" id="NIF" value="" style="width:100%" class="text ui-widget-content ui-corner-all">
-    
-    	<div>Especialidades</div> 
+      <div id="accordion">
+          <h3>Especialidades</h3>
+          <div> 
 	    	<select id="Speciality" style="float:left;">
 	    		<?php echo $dropoptions;?> 
 	    	</select>
 	    	<input type="button" id="addspec" class="Btn" value="Adicionar">
     	 
-    	<input type="button" id="Removespec" class="Btn hidden"  value="Remover">
-    	<input type="button" id="RemoveAllspec" class="Btn"  value="Limpar">
-		<table id="Doctors_spec"  class="display" cellspacing="0" width="100%">
-          <thead>
-          	<th>ID</th>
-          	<th>Especialidade</th>
-          </thead>
-        </table>
-
-		<input type="hidden" name="op" value="addMedico"/>
+        	<input type="button" id="Removespec" class="Btn hidden"  value="Remover">
+        	<input type="button" id="RemoveAllspec" class="Btn"  value="Limpar">
+    		<table id="Doctors_spec"  class="display" cellspacing="0" width="100%">
+              <thead>
+              	<th>ID</th>
+              	<th>Especialidade</th>
+              </thead>
+            </table>
+           </div>
+            <h3>Clinicas</h3>
+            <div> 
+                <select id="clinic" style="float:left;">
+    	    		<?php echo $clinicdropoptions;?> 
+    	    	</select>
+    	    	<input type="button" id="addClinic" class="Btn" value="Adicionar">
+        	 
+            	<input type="button" id="RemoveClinic" class="Btn hidden"  value="Remover">
+            	<input type="button" id="RemoveAllClinic" class="Btn"  value="Limpar">
+        		<table id="Doctors_Clinics"  class="display" cellspacing="0" width="100%">
+                  <thead>
+                  	<th>ID</th>
+                  	<th>Clinica</th>
+                  </thead>
+                </table>
+            </div>
+		</div>
+		<input type="hidden" name="op" id="DocOP" value="addMedico"/>
+		<input type="hidden" name="iddoc" id="iddoc" value=""/>
 		<input type="hidden" name="Specs" id="Specs" value=""/>
       <!-- Allow form submission with keyboard without duplicating the dialog button -->
        <input type="submit" id="add_final" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
 </div>
-<div id="Edit_elm" title="Editar Especialidade"> 
-  <form action="Admin_form_submit.php" method="post">
-    <fieldset>
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name_edit" value="" class="text ui-widget-content ui-corner-all">
-     
-     <input type="hidden" name="op" value="editMedico"/>
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="submit" id="edit_final" tabindex="-1" style="position:absolute; top:-1000px">
-    </fieldset>
-  </form>
-</div>
+ 
 <div class="hidden">
 	<form action="Admin_form_submit.php" method="post">
 	<input type="hidden" name="idEspecialidade" id="idEspecialidade_in" value=""/>
@@ -203,7 +217,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <?php 
-include ('../../controls/footer.php');
+include ('../../Controls/footer.php');
 ?>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -214,37 +228,61 @@ include ('../../controls/footer.php');
  
 var selectedLine;
 var selectedSpec;
+var selectedClinic;
 var doctorSpec=[];
+var doctorClinc=[];
+var table_Doctors_spec;
+var table_Doctors_clinic;
 $(document).ready(function() {
 	var table = $('#Doctors').DataTable();
-	var table_Doctors_spec = $('#Doctors_spec').DataTable();
+	table_Doctors_spec = $('#Doctors_spec').DataTable(); 
+	table_Doctors_clinic = $('#Doctors_Clinics').DataTable();
+    $( "#accordion" ).accordion({
+        collapsible: true,
+        heightStyle: "content"
+      });
+	
     $('#Doctors tbody').on( 'click', 'tr', function () { 
-    if ( $(this).hasClass('selected') ) {
-        $(this).removeClass('selected');
-        selectedLine=null; 
-    }
-    else {
-        table.$('tr.selected').removeClass('selected');
-        $(this).addClass('selected');
-        selectedLine=$(this).attr('id'); 
-    }
-    ShowHideBtns();
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+            selectedLine=null; 
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            selectedLine=$(this).attr('id'); 
+        }
+        ShowHideBtns();
     } );
     
- $('#Doctors_spec tbody').on( 'click', 'tr', function () { 
+ 	$('#Doctors_spec tbody').on( 'click', 'tr', function () { 
     if ( $(this).hasClass('selected') ) {
-        $(this).removeClass('selected');
-        selectedSpec=null; 
-    }
-    else {
-    	table_Doctors_spec.$('tr.selected').removeClass('selected');
-        $(this).addClass('selected');
-        selectedSpec=$(this); 
-    }
-     
-    ShowHideBtnsSpec();
+            $(this).removeClass('selected');
+            selectedSpec=null; 
+        }
+        else {
+        	table_Doctors_spec.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            selectedSpec=$(this); 
+        }
+         
+        ShowHideBtnsSpec();
     } );
- 
+
+ 	$('#Doctors_Clinics tbody').on( 'click', 'tr', function () { 
+ 	    if ( $(this).hasClass('selected') ) {
+ 	            $(this).removeClass('selected');
+ 	            selectedClinic=null; 
+ 	        }
+ 	        else {
+ 	        	table_Doctors_clinic.$('tr.selected').removeClass('selected');
+ 	            $(this).addClass('selected');
+ 	           selectedClinic=$(this); 
+ 	        }
+ 	         
+ 	        ShowHideBtnsClinc();
+ 	    } );
+	 
    var dialog = $( "#create-Medico" ).dialog({
         autoOpen: false,
         height: 700,
@@ -260,27 +298,26 @@ $(document).ready(function() {
         	 dialog.dialog( "close" );
         }
       });
-  var dialogEdit = $( "#Edit_elm" ).dialog({
-        autoOpen: false,
-        height: 400,
-        width: 350,
-        modal: true,
-        buttons: {
-          "Criar": createMedic,
-          Cancel: function() {
-            dialog.dialog( "close" );
-          }
-        },
-        close: function() { 
-        	 dialog.dialog( "close" );
-        }
-      });
+  
    $( "#add" ).button().on( "click", function() {
-	   doctorSpec=[];
-	   $('#RemoveAllspec').click();
+	   cleanModal();
+	   $("#DocOP").val("addMedico"); 
 	      dialog.dialog( "open" );
 	    });
    $( "#edit" ).button().on( "click", function() {
+	   var docID=selectedLine;
+	   $("#iddoc").val(docID);
+	   cleanModal();
+	   $("#DocOP").val("editMedico"); 
+	   var elems=<?php echo $data;?>;
+	    
+	   $.each(elems, function( i,doc ) 
+	   {
+			if(docID==doc.id){
+				DrawDoctor(doc);
+				return false; 
+			}
+	   });
 	      dialog.dialog( "open" );
 	    });
    $( "#inactivate" ).button().on( "click", function() {
@@ -301,7 +338,7 @@ $(document).ready(function() {
 		   table_Doctors_spec.row.add([specid,$( "#Speciality option:selected" ).text()] ).draw( false );
 	   }
 	   else{
-		alert('<?php echo utf8_encode("Este mÈdico j· possui a especialidade seleccionada");?>');
+		alert('Este m√©dico j√° possui a especialidade seleccionada');
 	   }
  
    } ); 
@@ -318,6 +355,24 @@ $(document).ready(function() {
   } );
 } );
 
+function cleanModal(){
+	$("#name").val('');
+	$("#NIF").val('');
+	 doctorSpec=[]; 
+	$('#RemoveAllspec').click();
+}
+
+function DrawDoctor(Doctor){
+	$("#name").val(Doctor.nome);
+	$("#NIF").val(Doctor.nif);
+	$.each(Doctor.specs, function( i,spec ) 
+       {
+			doctorSpec.push(spec.id);
+		   table_Doctors_spec.row.add([spec.id,spec.nome] ).draw( false );
+       });
+	
+}
+
 function createMedic(){
 	$("#Specs").val(JSON.stringify(doctorSpec)); 
 	$("#add_final").click();
@@ -332,6 +387,17 @@ function ShowHideBtnsSpec(){
 		$("#Removespec").addClass("hidden"); 	 	
 	}
 } 
+function ShowHideBtnsClinc()
+{
+	if(selectedClinic)
+	{
+		$("#RemoveClinic").removeClass("hidden");  
+	}
+	else
+	{
+		$("#RemoveClinic").addClass("hidden"); 	 	
+	}
+}
 function ShowHideBtns(){ 
 	if(selectedLine)
 	{

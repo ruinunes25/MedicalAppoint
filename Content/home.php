@@ -16,8 +16,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>Medical Appoint| Home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="../CSS/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../CSS/style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -70,7 +70,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <div class="sidebar one_quarter first"> 
       <!-- ################################################################################################ -->
       <h6>Menu</h6>
-      <?php include("../controls/Menus.php")?>
+      <?php include("../Controls/Menus.php")?>
      
       <!-- ################################################################################################ -->
     </div>
@@ -149,8 +149,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="javascript/jquery.min.js"></script>
-<script src="javascript/jquery.backtotop.js"></script>
-<script src="javascript/jquery.mobilemenu.js"></script>
+<script src="../JavaScript/jquery.min.js"></script>
+<script src="../JavaScript/jquery.backtotop.js"></script>
+<script src="../JavaScript/jquery.mobilemenu.js"></script>
 </body>
 </html>

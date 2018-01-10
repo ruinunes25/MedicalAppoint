@@ -1,6 +1,6 @@
 <?php
 
-include("../../controls/DB_Auxiliar.php");
+include("../../Controls/DB_Auxiliar.php");
 session_start();
 
 
@@ -19,20 +19,20 @@ Licence URI: http://www.os-templates.com/template-terms
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>Medical Appoint| Administração | Especialidades</title>
+<title>Medical Appoint| AdministraÃ§Ã£o | Especialidades</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../javascript/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../JavaScript/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
 
 
-<link href="../../css/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../CSS/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../CSS/style.css" rel="stylesheet" type="text/css" media="all">
 
 <!-- JAVASCRIPTS -->
-<script src="../../javascript/jquery.min.js"></script>
-<script src="../../javascript/jquery.backtotop.js"></script>
-<script src="../../javascript/jquery.mobilemenu.js"></script>
-<script src="../../javascript/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../JavaScript/jquery.min.js"></script>
+<script src="../../JavaScript/jquery.backtotop.js"></script>
+<script src="../../JavaScript/jquery.mobilemenu.js"></script>
+<script src="../../JavaScript/jquery-ui/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css"/> 
 <script type="text/javascript" src="../../DataTables/datatables.min.js"></script>
 </head>
@@ -53,7 +53,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <ul class="clear"> 
           <li><a class="drop" href="#">Ol&aacute; <?php echo $_SESSION["User_Name"];?></a>
           	<ul>
-          		<li><a href="../../controls/logout.php">Log out</a></li>
+          		<li><a href="../../Controls/logout.php">Log out</a></li>
           	</ul>
           </li> 
         </ul> 
@@ -87,7 +87,7 @@ Licence URI: http://www.os-templates.com/template-terms
    <div class="sidebar one_quarter first"> 
       <!-- ################################################################################################ -->
       <h6>Menu</h6>
-      <?php include("../../controls/Menus.php")?>
+      <?php include("../../Controls/Menus.php")?>
      
       <!-- ################################################################################################ -->
     </div>
@@ -104,9 +104,9 @@ Licence URI: http://www.os-templates.com/template-terms
         <table id="Specialities"  class="display" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th><?php echo utf8_encode("Código");?></th>
-              <th><?php echo utf8_encode("Especialidade");?></th>
-              <th><?php echo utf8_encode("Estado");?></th>  
+              <th>CÃ³digo</th>
+              <th>Especialidade></th>
+              <th>Estado</th>  
               <th class="hidden"></th>
             </tr>
           </thead>
@@ -179,7 +179,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <?php 
-include ('../../controls/footer.php');
+include ('../../Controls/footer.php');
 ?>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
