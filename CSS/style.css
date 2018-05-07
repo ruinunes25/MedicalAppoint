@@ -25,4 +25,12 @@
     cursor:pointer;	
 } 
 
+.lblmandatory{
+	text-decoration: underline; 
+	font-weight: bold;
+	text-decoration-color: red;
+}
+
 #breadcrumb {padding: 20px 0 30px;}
+
+ 

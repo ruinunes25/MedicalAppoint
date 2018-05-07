@@ -19,6 +19,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
 <title>Login</title>
+<link rel="icon" type="image/png" href="../Images/favicon.ico" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="../CSS/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -62,7 +63,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <!-- ################################################################################################ -->
       <table style="width:50%;" align="center">
       	<tr style="display:<?php echo $display; ?>">
-      		<td>Username ou password inv�lidas.</td>
+      		<td>Username ou password inválidas.</td>
       	</tr>
       	
       	<tr> 

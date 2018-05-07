@@ -25,6 +25,9 @@
 		$sqlQuery=getClinicasByUser($userid);
 		$Arr=Array();
 		foreach ($conn->query($sqlQuery) as $row) {
+		    if($row['principal']==1){ 
+		        $_SESSION["UserDefaultClinic"]=$row['id'];
+		    }
 			array_push($Arr,Array("id"=>$row['id'],
 							"principal"=>$row['principal'],
 							"name"=>$row["nome"]));
